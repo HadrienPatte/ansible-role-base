@@ -7,7 +7,11 @@ lint:
   name: yamllint
 platforms:
   - name: debian
-    image: debian
+    image: jrei/systemd-debian:10
+    privileged: true
+    command: /sbin/init
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
 provisioner:
   name: ansible
   lint:
