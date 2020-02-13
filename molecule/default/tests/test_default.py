@@ -11,6 +11,8 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 @pytest.mark.parametrize('name', [
     ('openssh-server'),
     ('fail2ban'),
+    ('apt-listchanges'),
+    ('unattended-upgrades'),
 ])
 def test_package_is_installed(host, name):
     package = host.package(name)

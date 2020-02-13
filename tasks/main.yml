@@ -1,18 +1,35 @@
 ---
-- name: Configure SSH
-  include_tasks: ssh.yml
-
-- name: Install fail2ban
+- name: Install utilities
   apt:
-    name: fail2ban
+    name:
+      - openssh-server
+      - fail2ban
+      - apt-listchanges
+      - unattended-upgrades
     state: present
   register: apt_result
   retries: 3
   until: apt_result is succeeded
 
-- name: Enable fail2ban
+- name: Enable services
   systemd:
-    name: fail2ban
+    name: "{{ item }}"
     state: started
     enabled: true
+  loop:
+    - ssh
+    - fail2ban
+
+- name: Disable root and password SSH login
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: ^#?{{ item.option }}
+    line: "{{ item.option }} {{ item.value }}"
+    state: present
+  loop:
+    - option: PermitRootLogin
+      value: "no"
+    - option: PasswordAuthentication
+      value: "no"
+  notify: Restart SSH
 ...
