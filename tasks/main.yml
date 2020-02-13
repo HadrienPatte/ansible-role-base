@@ -6,6 +6,7 @@
       - fail2ban
       - apt-listchanges
       - unattended-upgrades
+      - etckeeper
     state: present
   register: apt_result
   retries: 3
@@ -19,6 +20,7 @@
   loop:
     - ssh
     - fail2ban
+    - etckeeper.timer
 
 - name: Disable root and password SSH login
   lineinfile:
