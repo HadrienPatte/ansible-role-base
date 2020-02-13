@@ -34,4 +34,8 @@
     - option: PasswordAuthentication
       value: "no"
   notify: Restart SSH
+
+- name: Configure timezone
+  timezone:
+    name: "{{ base_timezone }}"
 ...

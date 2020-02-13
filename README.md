@@ -10,7 +10,7 @@ None.
 
 ## Role Variables
 
-None.
+* `base_timezone`: Timezone, defaults to `UTC`
 
 # Dependencies
 
