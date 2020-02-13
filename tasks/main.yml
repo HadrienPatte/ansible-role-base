@@ -6,6 +6,7 @@
       - fail2ban
       - apt-listchanges
       - unattended-upgrades
+      - needrestart
       - etckeeper
     state: present
   register: apt_result

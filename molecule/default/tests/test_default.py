@@ -13,6 +13,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     ('fail2ban'),
     ('apt-listchanges'),
     ('unattended-upgrades'),
+    ('needrestart'),
     ('etckeeper'),
 ])
 def test_package_is_installed(host, name):
