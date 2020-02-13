@@ -1,4 +1,18 @@
 ---
 - name: Configure SSH
   include_tasks: ssh.yml
+
+- name: Install fail2ban
+  apt:
+    name: fail2ban
+    state: present
+  register: apt_result
+  retries: 3
+  until: apt_result is succeeded
+
+- name: Enable fail2ban
+  systemd:
+    name: fail2ban
+    state: started
+    enabled: true
 ...

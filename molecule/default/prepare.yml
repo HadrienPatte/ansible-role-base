@@ -1,0 +1,9 @@
+---
+- name: Prepare
+  hosts: all
+  tasks:
+    - name: Create auth log file for fail2ban
+      file:
+        path: /var/log/auth.log
+        state: touch
+...

@@ -10,6 +10,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 @pytest.mark.parametrize('name', [
     ('openssh-server'),
+    ('fail2ban'),
 ])
 def test_package_is_installed(host, name):
     package = host.package(name)
@@ -18,6 +19,7 @@ def test_package_is_installed(host, name):
 
 @pytest.mark.parametrize('name', [
     ('ssh'),
+    ('fail2ban'),
 ])
 def test_service_is_running(host, name):
     service = host.service(name)
@@ -26,6 +28,7 @@ def test_service_is_running(host, name):
 
 @pytest.mark.parametrize('name', [
     ('ssh'),
+    ('fail2ban'),
 ])
 def test_service_is_enabled(host, name):
     service = host.service(name)
