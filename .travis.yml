@@ -33,7 +33,7 @@ jobs:
 
     - name: molecule
       stage: test
-      service: docker
+      services: docker
       install:
         - pip install molecule[docker] pytest testinfra
       before_script:
