@@ -15,6 +15,9 @@ before_script:
   - cd hadrienpatte.base
 
 script:
+  - yamllint .
+  - ansible-lint -v
+  - flake8 -v
   - molecule test
 
 notifications:
