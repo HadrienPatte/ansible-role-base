@@ -1,4 +1,4 @@
-molecule[docker]
+molecule[docker,test]
 yamllint
 ansible-lint
 flake8

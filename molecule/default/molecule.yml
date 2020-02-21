@@ -6,4 +6,6 @@ platforms:
     command: /sbin/init
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+verifier:
+  name: testinfra
 ...
